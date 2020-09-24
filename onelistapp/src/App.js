@@ -22,7 +22,6 @@ function App() {
 
     <header>
       <h1>One List</h1>
-      <h4>Things To Do</h4>
       </header>
 
       {/* place form here with states for todos, setTodos, inputs, setInputs, setStatus */}
