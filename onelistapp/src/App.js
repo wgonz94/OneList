@@ -13,9 +13,28 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([])
 
-  // Run useEffect to update todos and local storage
+  // Run useEffect to update todos 
+
+  //USE EFFECT
+  useEffect(() => {
+    filterHandler();
+
+  }, [todos, status])
 
   // filter handler
+  const filterHandler = () => {
+    switch(status){
+      case 'completed':
+        setFilteredTodos(todos.filter(todo => todo.completed === true));
+        break;
+      case 'incompleted':
+        setFilteredTodos(todos.filter(todo => todo.completed === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  }
 
   return(
     <div className="App">
