@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
+//imported components
+
+
 function App() {
-  return (
+
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+    <header>
+      <h1>One List</h1>
+      <h4>Things To Do</h4>
       </header>
     </div>
-  );
-}
 
-export default App;
+    //place form here with states for todos, setTodos, inputs, setInputs, setStatus
+
+    //place list of todos here to filter based on status of todos
+  )
+}
