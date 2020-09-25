@@ -32,5 +32,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgonz94/OneList.git"
+  },
+  "homepage": "https://github.com/wgonz94/OneList#readme"
 }
+
+
