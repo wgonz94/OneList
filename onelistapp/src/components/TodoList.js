@@ -4,10 +4,21 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Todo from "./Todo";
 
 const TodoList = ({ todos, setTodos, filteredTodos }) => {
+    const saveMovedTodos = () => {
+        if (localStorage.getItem("todos") === null) {
+          localStorage.setItem("todos", JSON.stringify([]));
+        } else{
+          localStorage.setItem("todos", JSON.stringify(todos))
+        }
+      }
   return (
     <DragDropContext
-      onDragEnd={(...props) => {
-        console.log(props);
+      onDragEnd={(param) => {
+        //console.log(param);
+        const srcIndex = param.source.index;
+        const destIndex = param.destination.index;
+        filteredTodos.splice(destIndex, 0, filteredTodos.splice(srcIndex, 1)[0]);
+        saveMovedTodos(filteredTodos);
       }}
     >
       <div className="todo-container">
@@ -19,24 +30,32 @@ const TodoList = ({ todos, setTodos, filteredTodos }) => {
                   <Draggable
                     key={todo.id}
                     draggableId={"draggable- " + todo.id}
-                    index={i}>
+                    index={i}
+                  >
                     {(provided, snapshot) => (
-                        <div
+                      <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                            >
-                      <Todo
-                        key={todo.id}
-                        text={todo.text}
-                        todos={todos}
-                        todo={todo}
-                        setTodos={setTodos}
-                      />
+                        // style={{
+                        //   ...provided.draggableProps.style,
+                        //   boxShadow: snapshot.isDragging
+                        //     ? "0 0 .1rem #253031"
+                        //     : "none",
+                        // }}
+                      >
+                        <Todo
+                          key={todo.id}
+                          text={todo.text}
+                          todos={todos}
+                          todo={todo}
+                          setTodos={setTodos}
+                        />
                       </div>
                     )}
                   </Draggable>
                 ))}
+                {provided.placeholder}
               </div>
             )}
           </Droppable>
