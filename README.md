@@ -3,7 +3,7 @@ A React productivity app that enables the user to create, modify, complete and d
 
 
 ## Deployed with Vercel
-https://one-list.wgonz94.vercel.app/
+https://one-list.vercel.app/
 
 ## Technologies Involved
 * React.js
