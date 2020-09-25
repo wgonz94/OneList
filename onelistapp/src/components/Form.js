@@ -12,7 +12,7 @@ const Form = ({todos, setTodos, input, setInputs, setStatus}) => {
     const submitHandler = (e) => {
         e.preventDefault();
         //assign values of todos in a string
-        setTodos([ ...todos, {text: input, completed: false, id: Math.random() * 1000 }
+        setTodos([ ...todos, {text: input, completed: false, id: Math.random() * 1000, position: Math.floor(Math.random() * 51)}
         ]);
         //clear input value after submitted for new entry
         setInputs("");

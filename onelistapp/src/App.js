@@ -20,11 +20,7 @@ function App() {
 
   //USE EFFECT
   useEffect(() => {
-    filterHandler();
-    saveLocalTodos();
-  }, [todos, status])
-
-  // filter handler
+    // filter handler
   const filterHandler = () => {
     switch(status){
       case 'completed':
@@ -47,6 +43,11 @@ function App() {
       localStorage.setItem("todos", JSON.stringify(todos))
     }
   }
+    filterHandler();
+    saveLocalTodos();
+  }, [todos, status])
+
+  
 
   const getLocalTodos = () => {
     if(localStorage.getItem("todos") === null) {
@@ -64,7 +65,6 @@ function App() {
       <h1>One List</h1>
       </header>
 
-      {/* place form here with states for todos, setTodos, inputs, setInputs, setStatus */}
       <Form 
         todos={todos}
         setTodos={setTodos}
@@ -74,6 +74,7 @@ function App() {
         />
 
     {/* place list of todos here to filter based on status of todos */}
+    
     <TodoList 
         filteredTodos={filteredTodos}
         todos={todos}
